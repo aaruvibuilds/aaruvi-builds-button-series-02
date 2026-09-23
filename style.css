@@ -1,0 +1,60 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#17131f;--paper:#f7f3ea;--ink:#201b27;--muted:#817a87;--line:#ddd7ce;--purple:#7655d6;--purple-dark:#5b3fc0}
+html,body{width:100%;height:100%}
+body{overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,#2a2138 0,#17131f 48%,#100e15 100%);color:var(--ink);font-family:Manrope,sans-serif}
+body:before{content:"";position:fixed;inset:28px;border:1px dashed rgba(167,142,224,.38);border-radius:22px;pointer-events:none}
+.scene{position:relative;width:100%;height:100vh;display:grid;place-items:center}
+.brand{position:fixed;top:48px;right:54px;color:#e7def8;font:500 10px "DM Mono",monospace;letter-spacing:.24em}
+.mail-window{position:relative;width:min(620px,88vw);height:470px;overflow:hidden;border-radius:26px;background:var(--paper);box-shadow:0 30px 80px rgba(0,0,0,.42)}
+.topbar{height:78px;padding:0 27px;display:flex;align-items:center;gap:13px;border-bottom:1px solid var(--line)}
+.avatar{width:37px;height:37px;display:grid;place-items:center;border-radius:12px;background:var(--ink);color:white;font-weight:800;font-size:13px}
+.eyebrow{display:block;color:var(--muted);font:500 8px "DM Mono",monospace;letter-spacing:.2em}
+.topbar h1{margin-top:3px;font-size:16px;letter-spacing:-.035em}.online{width:7px;height:7px;margin-left:auto;border-radius:50%;background:#78a479}
+.message{padding:29px 38px;transition:opacity .45s ease,transform .7s cubic-bezier(.2,.85,.2,1)}
+.recipient,.subject{display:flex;align-items:center;gap:19px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.subject{padding-top:14px}.recipient strong,.subject strong{font-size:11px}
+.body-copy{padding-top:25px;display:grid;gap:8px;color:#625b67;font-size:11px;line-height:1.4}.body-copy span:first-child{color:var(--ink);font-weight:700;margin-bottom:3px}
+.attachment{height:65px;margin-top:23px;padding:10px 12px;display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:13px;background:#fbf8f2}
+.mini-file{width:37px;height:43px;display:grid;place-items:center;border:1px solid #bbb4aa;border-radius:7px;background:#f2ede3;color:var(--purple-dark);font-size:7px;font-weight:900}
+.attachment strong,.attachment small{display:block}.attachment strong{font-size:10px}.attachment small{margin-top:4px;color:var(--muted);font-size:8px}
+.send-btn{position:relative;width:120px;height:45px;margin-top:22px;border:0;border-radius:12px;background:var(--ink);color:white;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:9px;font:800 11px Manrope;transition:transform .25s ease,background .3s ease,color .3s ease,box-shadow .3s ease}
+.send-btn:hover{transform:translateY(-2px);background:var(--purple-dark);box-shadow:0 10px 25px rgba(91,63,192,.2)}
+.send-btn:active{transform:scale(.97)}.send-btn:focus-visible{outline:2px solid var(--purple);outline-offset:5px}
+.send-btn.pressed{background:#fff;color:var(--ink);transform:translateY(1px) scale(.97);box-shadow:0 4px 12px rgba(32,27,39,.1)}
+.send-btn.pressed .send-label{font-family:"DM Mono",monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase}
+.send-btn.pressed .send-icon{transform:translateX(2px) rotate(-18deg) scale(.92)}
+.send-btn.pressed .send-icon:before{background:var(--ink)}.send-btn.pressed .send-icon i{background:#fff}
+.send-icon{width:17px;height:16px;position:relative;transform:rotate(-10deg);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.send-icon:before{content:"";position:absolute;inset:0;clip-path:polygon(0 0,100% 45%,0 100%,18% 52%);background:white;transition:background .25s ease}
+.send-icon i{position:absolute;left:4px;top:6px;width:8px;height:1px;background:var(--ink);transition:background .25s ease}
+.send-check{display:none}
+.flight-zone{position:absolute;inset:0;opacity:0;pointer-events:none}
+.plane{position:absolute;left:115px;bottom:125px;width:72px;height:52px;opacity:0}
+.plane:before{content:"";position:absolute;inset:0;background:var(--ink);clip-path:polygon(0 3%,100% 48%,0 97%,27% 54%);border-radius:4px}
+.wing{position:absolute;left:25px;top:27px;width:43px;height:2px;background:var(--paper);transform:rotate(8deg);transform-origin:left center;z-index:2}.nose{position:absolute;right:-1px;top:24px;width:9px;height:4px;background:var(--purple);transform:rotate(-2deg);z-index:3}
+.trail{position:absolute;left:87px;bottom:145px;width:0;height:1px;background:#9b8db7;transform:rotate(-17deg);transform-origin:left center;opacity:.65}
+.sent-mark{position:absolute;left:50%;top:50%;display:grid;place-items:center;gap:12px;transform:translate(-50%,-50%) scale(.7);opacity:0}.sent-mark span{color:var(--purple-dark);font:800 10px Manrope;letter-spacing:.28em}
+.check{position:relative;width:58px;height:58px;border:1px solid #c8c0d7;border-radius:50%}.check:after{content:"";position:absolute;width:21px;height:11px;left:17px;top:20px;border-left:2px solid var(--purple-dark);border-bottom:2px solid var(--purple-dark);transform:rotate(-45deg) scale(0)}
+.sent-state{position:absolute;z-index:8;inset:78px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--paper);opacity:0;transform:translateY(15px) scale(.985);pointer-events:none;transition:opacity .45s ease,transform .65s cubic-bezier(.16,1,.3,1)}
+.sent-badge{width:64px;height:64px;margin-bottom:19px;display:grid;place-items:center;border-radius:50%;background:var(--purple-dark);color:#fff;font-size:22px;box-shadow:0 15px 40px rgba(91,63,192,.25);transform:scale(.6)}
+.sent-state h2{margin-top:8px;font-size:44px;line-height:.92;letter-spacing:-.07em}.sent-state h2 em{font-style:normal;color:#89838d}.sent-state p{margin-top:8px;color:var(--muted);font-size:11px}
+.again{margin-top:23px;padding:11px 16px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);font:800 10px Manrope;cursor:pointer}.again:hover{background:#fbf8f2}
+.mail-window.launching .message{animation:messageAway .8s cubic-bezier(.2,.85,.2,1) forwards}.mail-window.launching .flight-zone{opacity:1}
+.mail-window.launching .send-btn{background:var(--purple-dark)}.mail-window.launching .send-icon{animation:sendPulse .65s ease-in-out infinite}.mail-window.launching .send-label{font-family:"DM Mono",monospace;font-size:8px;letter-spacing:.13em;text-transform:uppercase}
+.mail-window.launching .plane{animation:planeFly 1.35s .08s cubic-bezier(.2,.75,.2,1) forwards}.mail-window.launching .trail{animation:trailGrow 1.1s .18s ease forwards}
+.mail-window.sent .flight-zone{opacity:1}.mail-window.sent .sent-mark{animation:sentIn .55s cubic-bezier(.2,.85,.2,1) forwards}.mail-window.sent .check:after{animation:checkDraw .4s .18s cubic-bezier(.2,.85,.2,1) forwards}
+.mail-window.sent .sent-state{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}.mail-window.sent .sent-badge{animation:badgeIn .55s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes messageAway{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px) scale(.975)}}
+@keyframes sendPulse{50%{transform:translateY(-2px) rotate(-14deg) scale(1.05)}}
+@keyframes planeFly{0%{opacity:0;transform:translate(-10px,25px) rotate(-17deg) scale(.3)}18%{opacity:1;transform:translate(0,0) rotate(-17deg) scale(1)}100%{opacity:1;transform:translate(350px,-185px) rotate(-17deg) scale(.82)}}
+@keyframes trailGrow{from{width:0;opacity:0}to{width:330px;opacity:.65}}
+@keyframes sentIn{from{opacity:0;transform:translate(-50%,-50%) scale(.7)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes checkDraw{to{transform:rotate(-45deg) scale(1)}}@keyframes badgeIn{0%{transform:scale(.55)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+.caption{position:fixed;bottom:20px;color:#968aa7;font:500 9px "DM Mono",monospace;letter-spacing:.25em}
+@media(max-width:650px){
+ body:before{inset:14px;border-radius:15px}.brand{top:29px;right:30px;font-size:8px}
+ .mail-window{width:94vw;height:450px;border-radius:21px}.message{padding:27px 23px}.recipient,.subject{gap:12px}
+ .plane{left:80px}@keyframes planeFly{0%{opacity:0;transform:translate(-5px,20px) rotate(-17deg) scale(.3)}18%{opacity:1;transform:translate(0,0) rotate(-17deg) scale(1)}100%{opacity:1;transform:translate(190px,-130px) rotate(-17deg) scale(.72)}}@keyframes trailGrow{from{width:0;opacity:0}to{width:195px;opacity:.65}}
+ .caption{bottom:8px;font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

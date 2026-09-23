@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aaruvi Builds — Button 02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="scene">
+  <div class="brand">AARUVI BUILDS</div>
+
+  <section class="mail-window" id="mailWindow">
+    <header class="topbar">
+      <div class="avatar">A</div>
+      <div><span class="eyebrow">NEW MESSAGE</span><h1>Creative Direction</h1></div>
+      <span class="online"></span>
+    </header>
+
+    <div class="message">
+      <div class="recipient"><span class="eyebrow">TO</span><strong>creative@studio.co</strong></div>
+      <div class="subject"><span class="eyebrow">SUBJECT</span><strong>Brand System — Final Files</strong></div>
+      <div class="body-copy">
+        <span>Hi team,</span>
+        <span>The final brand system is ready for review.</span>
+        <span>Sharing the complete package below.</span>
+      </div>
+      <div class="attachment">
+        <div class="mini-file">ZIP</div>
+        <div><strong>brand-system.zip</strong><small>42.8 MB</small></div>
+      </div>
+
+      <button class="send-btn" id="sendBtn" type="button">
+        <span class="send-icon" aria-hidden="true"><i></i></span>
+        <span class="send-label">Send</span>
+        <span class="send-check" aria-hidden="true">✓</span>
+      </button>
+    </div>
+
+    <div class="flight-zone" aria-hidden="true">
+      <div class="trail"></div>
+      <div class="plane"><div class="wing"></div><div class="nose"></div></div>
+      <div class="sent-mark"><div class="check"></div><span>SENT</span></div>
+    </div>
+
+    <div class="sent-state" id="sentState">
+      <div class="sent-badge">✓</div>
+      <span class="eyebrow">MESSAGE SENT</span>
+      <h2>On its<br><em>way.</em></h2>
+      <p>Delivered to creative@studio.co</p>
+      <button class="again" id="again" type="button">Compose again</button>
+    </div>
+  </section>
+
+  <div class="caption" id="caption" aria-live="polite">SEND THE MESSAGE</div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
